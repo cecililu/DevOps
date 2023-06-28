@@ -14,6 +14,9 @@ pipeline {
                 }
             }
         }
+        stage('Checkout') {
+       git branch: 'lts-1.532', credentialsId: 'fghj', url: 'https://github.com/cecililu/DevOps'
+   }
         stage('Create Tomcat Image') {
             agent {
                 label 'ubuntu-node'
