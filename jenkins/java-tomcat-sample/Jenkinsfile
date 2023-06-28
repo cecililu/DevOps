@@ -14,13 +14,15 @@ pipeline {
                 }
             }
         }
-        stage('Checkout') {
+             stage('Checkout') {
        git branch: 'lts-1.532', credentialsId: 'fghj', url: 'https://github.com/cecililu/DevOps'
+       steps{}
    }
         stage('Create Tomcat Image') {
             agent {
                 label 'ubuntu-node'
             }
+            
             steps {
                 copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: env.JOB_NAME, selector: specific(env.BUILD_NUMBER)
                 echo "Building docker image"
