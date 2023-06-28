@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Create Tomcat Image') {
             agent {
-                label 'testnode'
+                label 'ubuntu-node'
             }
             steps {
                 copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: env.JOB_NAME, selector: specific(env.BUILD_NUMBER)
